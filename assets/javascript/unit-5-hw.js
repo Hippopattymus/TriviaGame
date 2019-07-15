@@ -4,24 +4,34 @@ var push = false;
 
 questions = [
     {
-        question:"Who Shot First?",
+        question: "Q1: Who Shot First?",
         answers: ["Han", "Lando", "Chewbacca", "Greedo"],
         correctAnswer: 0
     },
     {
-        question:"Best Star Wars Character?",
+        question: "Q2: Best Star Wars Character?",
         answers: ["Anakin", "Darth Bane", "Jar-Jar", "None"],
         correctAnswer: 1
     },
     {
-        question:"Worst Star Wars Character?",
-        answers: ["Anakin", "Darth Bane", "Jar-Jar", "None"],
+        question: "Q3: Worst Star Wars Character?",
+        answers: ["Anakin", "Darth Bane", "Jar-Jar", "None; They're All Amazing"],
         correctAnswer: 0
     },
     {
-        question:"Most likely to be a Sith Lord?",
+        question: "Q4: Most likely to be a Sith Lord?",
         answers: ["Anakin", "Darth Bane", "Jar-Jar", "All of the Above"],
         correctAnswer: 3
+    },
+    {
+        question: "Q5: Least likely to be influenced by the Dark Side?",
+        answers: ["Padme", "Leia", "BB-8", "Lando"],
+        correctAnswer: 2
+    },
+    {
+        question: "Q6: Why Does Kylo's Lightsaber look the way it does?",
+        answers: ["Aesthetics brah", "He's An Edgelord", "To Vent Excess Heat"],
+        correctAnswer: 2
     },
 ];
 
@@ -34,8 +44,9 @@ var state = {
 $("#timeleft").hide();
 $("#question").hide();
 $("#answers").hide();
+$("#restart").hide();
 
-$("#start").on("click", function(){
+$("#start").on("click", function () {
     $("#start").hide();
     displayQ();
     setInterval(setRemainingTime, 1000);
@@ -48,13 +59,13 @@ function displayQ() {
     $("#answers").show();
     checkOver();
     console.log(correct);
-    
+
     var q = questions[state.currentQ];
-    
+
     $("#question").text(q.question);
     resetTime();
     $("#answers").empty();
-    for (var i = 0; i < q.answers.length; i++){
+    for (var i = 0; i < q.answers.length; i++) {
         var answer = $('<button data-position="$(i)">');
         answer.data("position", i);
         answer.addClass("answer");
@@ -63,7 +74,7 @@ function displayQ() {
 
     }
 
-    $(".answer").on("click", function(){
+    $(".answer").on("click", function () {
         push = true;
         if ($(this).data("position") == questions[state.currentQ].correctAnswer) {
             console.log("nice");
@@ -71,64 +82,70 @@ function displayQ() {
             correct++;
             winScreen();
             $("#correct").text("Correct!");
-            setTimeout(resetTime, 3*1000);
-            setTimeout(displayQ, 3*1000);
+            $("#correct").append("<br> Next Question in 3 seconds");
+            setTimeout(resetTime, 3 * 1000);
+            setTimeout(displayQ, 3 * 1000);
         }
         else {
             console.log("incorrect");
-        
+
             incorrect++;
             state.currentQ++;
 
             winScreen();
-            $("#correct").text("Correct Answer: " + q.answers[q.correctAnswer]);
+            $("#correct").text("The Correct Answer was " + q.answers[q.correctAnswer]);
             $("#correct").append("<br> Next Question in 3 seconds");
-            setTimeout(resetTime, 3*1000);
-            setTimeout(displayQ, 3*1000);
+            setTimeout(resetTime, 3 * 1000);
+            setTimeout(displayQ, 3 * 1000);
         }
-        setTimeout(checkOver, 3*1000);
-        
+        setTimeout(checkOver, 3 * 1000);
+
     });
 }
 
-function resetTime(){
+function resetTime() {
     state.timeRemaining = 10;
-    $("#timeleft").text(state.timeRemaining);
+    $("#timeleft").text("Time Left: " + state.timeRemaining);
     $("#correct").empty();
     push = false;
-    
+
 }
-function setRemainingTime(){
+function setRemainingTime() {
     state.timeRemaining--;
-    $("#timeleft").text(state.timeRemaining); 
-    
+    $("#timeleft").text("Time Left: " + state.timeRemaining);
+
     if ((state.timeRemaining == 0) && (push != true)) {
         winScreen();
         $("#correct").text("Out of Time!")
         $("#correct").append("<br> Correct answer was " + questions[state.currentQ].answers[questions[state.currentQ].correctAnswer]);
         state.currentQ++;
         incorrect++;
-        setTimeout(displayQ, 3*1000);
-        
+        setTimeout(displayQ, 3 * 1000);
     }
-    
 }
 
-function winScreen(){
+function winScreen() {
     $("#timeleft").hide();
     $("#question").hide();
     $("#answers").hide();
 
 }
 
-function checkOver(){
+function checkOver() {
     if (questions.length == (state.currentQ)) {
         $("#timeleft").hide();
         $("#question").hide();
         $("#answers").hide();
         $("#correct").hide();
         $("#win").show();
+
         $("#win").text("All Done! You answered " + correct + " correctly and " + incorrect + " incorrectly!");
+        $("#win").append("<br> Play again?");
+
+        $("#restart").show();
+        $("#restart").click(function () {
+            location.reload(true);
+        });
     }
 
 }

@@ -5,21 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css"> -->
-	<!-- <link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
+    <link href="https://fonts.googleapis.com/css?family=Lekton:700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poller+One&display=swap" rel="stylesheet">
+
 </head>
-<body>
-    <button id="start">Start</button>
-    <div id="question"></div>
-    <div id ="answers"></div>
-    <div id="timeleft"></div>
-    <div id="correct"></div>
-    <div id="win"></div>
+<body style="background-image: url('assets/images/falcon.jpg'); background-size: cover; ">
+    
+    <div class="cont">
+        <div class="row mt-5 jumbotron _0">
+            <div class="col-12 _00">
+                <h1 style="font-family: 'Poller One', cursive";>Subjective Trivia</h1>
+                <p style="font-family: 'Lekton', serif;">Where there are no right answers and the rules don't matter</p>
+            </div>
+        </div>
+
+        <div class="row jumbotron _1">
+                <div id="correct" class="col-12"></div>
+
+                <div id="win"class="col-12"></div>
+                <div id="question" class="col-12"></div>
+                <div id ="answers"class="col-10 pt-4"></div>
+                <div id="timeleft"class="col-2"></div>
+                <div class="col-5"></div>
+                <div class="col-5">
+                        <button id="start"class="ml-3">Start</button>
+                        <button id="restart"class="ml-4">Restart</button>
+                </div>
+                
+        </div>
+    </div>
 </body>
 <script type="text/javascript" src = "assets/javascript/unit-5-hw.js"></script>
 </html>

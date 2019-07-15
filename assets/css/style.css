@@ -1,0 +1,49 @@
+.cont{
+    margin: 0 100px 0 100px;
+}
+
+#start, #restart{
+    text-align: center;
+    margin-top: 25px;
+    font-size: 18px;
+    width: 100px;
+    align-content: center;
+    font-family:'Lekton', serif;
+}
+#correct, #win {
+    text-align: center;
+    font-family:'Lekton', serif;
+}
+
+
+#question {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    padding-right: 500px;
+    font-family: 'Poller One', cursive;
+}
+
+.answer {
+    margin-left: 25px;
+    padding: 10px 25px 10px 25px;
+    font-family:'Lekton', serif;
+}
+
+#timeleft {
+    font-family:'Lekton', serif;
+}
+
+._0{
+    
+    opacity: .75;
+    padding-top: 50px;
+    height: 200px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+._1{
+    opacity: .75;
+}
+
