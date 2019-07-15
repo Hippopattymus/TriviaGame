@@ -20,18 +20,24 @@
     font-size: 20px;
     font-weight: bold;
     text-align: center;
-    padding-right: 500px;
+    padding-right: 0;
     font-family: 'Poller One', cursive;
 }
 
 .answer {
-    margin-left: 25px;
+    
+    margin: 0 10px 0 10px;
     padding: 10px 25px 10px 25px;
     font-family:'Lekton', serif;
 }
 
+#answers{
+    text-align: center;
+}
 #timeleft {
     font-family:'Lekton', serif;
+    text-align: center;
+
 }
 
 ._0{
